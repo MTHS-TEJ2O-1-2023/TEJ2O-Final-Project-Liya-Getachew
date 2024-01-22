@@ -37,6 +37,7 @@ while (true) {
       } else {
         // move backward
         robotbit.StpCarMove(10, 48)
+        robotbit.StepperTurn(robotbit.Steppers.M1, robotbit.Turns.T1B0)
       }
 
       // send go to sophie's microbit
