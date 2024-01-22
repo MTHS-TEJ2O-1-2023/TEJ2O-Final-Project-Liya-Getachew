@@ -14,34 +14,28 @@ basic.showIcon(IconNames.Asleep)
 radio.setGroup(5)
 
 while (true) {
-  if (input.buttonIsPressed(Button.A) === true) {
-    while (true) {
-      // find distance from sonar
-      basic.clearScreen()
-      distanceToObject = sonar.ping(
-        DigitalPin.P1,
-        DigitalPin.P2,
-        PingUnit.Centimeters
-      )
+  // find distance from sonar
+  basic.clearScreen()
+  distanceToObject = sonar.ping(
+    DigitalPin.P1,
+    DigitalPin.P2,
+    PingUnit.Centimeters
+  )
 
-      // show distance
-      basic.showNumber(distanceToObject)
+  // send go to sophie's microbit
+  radio.sendString('Run')
 
-      // turn if distance > 10
-      if (distanceToObject > 10) {
-        robotbit.StpCarMove(-20, 48)
-        basic.pause(500)
-        robotbit.StepperTurn(robotbit.Steppers.M1, robotbit.Turns.T1B0)
-        basic.pause(500)
-        robotbit.StpCarMove(-10, 48)
-      } else {
-        // move backward
-        robotbit.StpCarMove(10, 48)
-        robotbit.StepperTurn(robotbit.Steppers.M1, robotbit.Turns.T1B0)
-      }
+  // show distance
+  basic.showNumber(distanceToObject)
 
-      // send go to sophie's microbit
-      radio.sendString('Run')
-    }
+  // turn if distance > 10
+  if (distanceToObject > 10) {
+    robotbit.StpCarMove(-20, 48)
+    robotbit.StepperTurn(robotbit.Steppers.M1, robotbit.Turns.T1B0)
+    robotbit.StpCarMove(-10, 48)
+  } else {
+    // move backward
+    robotbit.StpCarMove(10, 48)
+    robotbit.StepperTurn(robotbit.Steppers.M1, robotbit.Turns.T1B0)
   }
 }
