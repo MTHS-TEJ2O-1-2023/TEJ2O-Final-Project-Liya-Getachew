@@ -29,13 +29,11 @@ while (true) {
 
       // turn if distance > 10
       if (distanceToObject > 10) {
+        robotbit.StpCarMove(-20, 48)
+        basic.pause(500)
+        robotbit.StepperTurn(robotbit.Steppers.M1, robotbit.Turns.T1B0)
+        basic.pause(500)
         robotbit.StpCarMove(-10, 48)
-        basic.pause(500)
-        robotbit.StepperTurn(robotbit.Steppers.M1, robotbit.Turns.T1B4)
-        basic.pause(500)
-        robotbit.StepperTurn(robotbit.Steppers.M2, robotbit.Turns.T1B4)
-        basic.pause(500)
-        robotbit.StpCarMove(10, 48)
       } else {
         // move backward
         robotbit.StpCarMove(10, 48)
