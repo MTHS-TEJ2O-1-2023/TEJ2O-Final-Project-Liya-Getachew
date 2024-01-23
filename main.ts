@@ -28,13 +28,13 @@ while (true) {
   // show distance
   basic.showNumber(distanceToObject)
 
-  // turn if distance > 10
+  // if distance > 10, move forward 20 cm & turn 
   if (distanceToObject > 10) {
     robotbit.StpCarMove(-20, 48)
     robotbit.StepperTurn(robotbit.Steppers.M1, robotbit.Turns.T1B0)
     robotbit.StpCarMove(-10, 48)
   } else {
-    // move backward
+    // if distance < 10, move backward
     robotbit.StpCarMove(10, 48)
     robotbit.StepperTurn(robotbit.Steppers.M1, robotbit.Turns.T1B0)
   }
